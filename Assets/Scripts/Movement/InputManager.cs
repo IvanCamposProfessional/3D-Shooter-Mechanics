@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     //Variable for saving the PlayerInput
     private PlayerInput playerInput;
     //Variable for saving the Action OnFoot on PlayerInput
-    private PlayerInput.OnFootActions onFoot;
+    public PlayerInput.OnFootActions onFoot;
     //Variable for the Motor of the Movement (script)
     private PlayerMotor motor;
     //Variable for the Look of the Camera (script)
@@ -29,6 +29,9 @@ public class InputManager : MonoBehaviour
         //We define the funcionalitiy when Jump Action is performed
         //Calculate the Jump with the function on the motor setting a pointer to the callback context called ctx
         onFoot.Jump.performed += ctx => motor.Jump();
+
+        //Hide the cursor on the scene
+        Cursor.visible = false;
     }
 
     void FixedUpdate()
