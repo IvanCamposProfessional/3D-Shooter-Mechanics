@@ -474,6 +474,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &347985140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5201146296460614902, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
+  m_PrefabInstance: {fileID: 1381813478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &375687694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 19.3}
+  m_AnchoredPosition: {x: -33.9, y: 19.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622126689
@@ -1164,7 +1169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -66.8266, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1183,6 +1188,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4856567407435564620, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
   m_PrefabInstance: {fileID: 1381813478}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &670307347
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347985140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07086616
+  m_Center: {x: 0.000000029802322, y: 0.000000007450581, z: 0.00000047683716}
+--- !u!114 &670307348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347985140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e765cf07494e24f968605187c87d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 347985140}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 622126689}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: You are DEAD
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &670307349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347985140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6647c1e6575214b9d4c5213924b35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promptMessage: GET the COIN
 --- !u!1 &672603402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f8d1f28aca1eb4bb013a0b8db68051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
   promptMessage: Use KeyPad
   door: {fileID: 1967717990}
 --- !u!1 &864614145
@@ -2025,10 +2105,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin
       objectReference: {fileID: 0}
+    - target: {fileID: 5201146296460614902, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5201146296460614902, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670307347}
+    - targetCorrespondingSourceObject: {fileID: 5201146296460614902, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670307349}
+    - targetCorrespondingSourceObject: {fileID: 5201146296460614902, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670307348}
   m_SourcePrefab: {fileID: 100100000, guid: 3da94ca8b18b8aa4f98177aee8784e48, type: 3}
 --- !u!1 &1450299036 stripped
 GameObject:
