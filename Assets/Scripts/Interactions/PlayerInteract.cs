@@ -49,7 +49,6 @@ public class PlayerInteract : MonoBehaviour
         if(Physics.Raycast(ray, out hitInfo, distance)){
             //If the GameObject that collided with the ray has the Script Interactable
             if(hitInfo.collider.GetComponent<Interactable>() != null){
-                Debug.Log("DONE");
                 //Temporal variable for the Interacatable script on the Hit Info Collider
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 //Use the funcion to Update the Prompt Text passing the Prompt Message on the Interactable Script

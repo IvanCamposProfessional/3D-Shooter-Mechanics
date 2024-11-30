@@ -6,10 +6,12 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {   
+
     //Variable to save the current health
     private float health;
-    //
+    //Variable to set the timer
     private float lerpTimer;
+    [Header("Health Bar")]
     //Variable to save the maximum health of the player
     public float maxHealth = 100f;
     //Variable that saves how quickly the delay bar takes to catch up to the one that we inmediatly set
@@ -20,11 +22,24 @@ public class PlayerHealth : MonoBehaviour
     //Variable to save the text of the health
     public TextMeshProUGUI healthText;
 
+    [Header("Daamge Overlay")]
+    //Variable for Damage Overlay GameObject
+    public Image overlay;
+    //Variable to set how long the image stays fully opaque
+    public float duration;
+    //Variable to set how quickly the image will fade
+    public float fadeSpeed;
+
+    //Timer to check against the duration
+    private float durationTimer;
+
     // Start is called before the first frame update
     void Start()
     {
         //At the start method we match the actual health with the max health
         health = maxHealth;
+        //Set the A of the damage image to 0 (it gets cleared at the start)
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b , 0);
     }
 
     // Update is called once per frame
@@ -35,12 +50,25 @@ public class PlayerHealth : MonoBehaviour
         //Update the Health UI every frame
         UpdateHealthUI();
 
-        if(Input.GetKeyDown(KeyCode.T)){
-            TakeDamage(Random.Range(5, 10));
-        }
-
-        if(Input.GetKeyDown(KeyCode.H)){
-            RestoreHealth(Random.Range(5, 10));
+        //If the overlay is active
+        if(overlay.color.a > 0){
+            //If the health is lower than 30
+            if(health < 30){
+                //We dont want to apply the timer, we want that the damage panel stays
+                return;
+            }
+            //The timer starts
+            durationTimer += Time.deltaTime;
+            //If the timer has ended
+            if(durationTimer > duration){
+                //Fade the image
+                //Temporal variable to save the alpha of the image
+                float tempAlpha = overlay.color.a;
+                //Decrease the alpha of the image with the fade speed we defined
+                tempAlpha -= Time.deltaTime * fadeSpeed;
+                //Apply the temporal alpha
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b , tempAlpha);
+            }
         }
     }
 
@@ -100,6 +128,10 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         //Reset the Lerp Timer
         lerpTimer = 0f;
+        //Each time we take damage the timer resets
+        durationTimer = 0;
+        //Apply the damaged image when we take damage
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b , 1);
     }
 
     //Function to restore health of the player

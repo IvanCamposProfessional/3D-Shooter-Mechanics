@@ -32,6 +32,16 @@ public class PlayerMotor : MonoBehaviour
         isGrounded = controller.isGrounded;
     }
 
+    //Function to make the player run
+    public void Run(){
+        speed = 7f;
+    }
+
+    //Function to make the player stop running
+    public void StopRunning(){
+        speed = 5f;
+    }
+
     //Define the function which recives the inputs for our InputManager.cs and then apply them to our CharacterController
     public void ProcessMove(Vector2 input){
         //Create a variable to set the move direction on the Player and initialize it to zero

@@ -29,6 +29,10 @@ public class InputManager : MonoBehaviour
         //We define the funcionalitiy when Jump Action is performed
         //Calculate the Jump with the function on the motor setting a pointer to the callback context called ctx
         onFoot.Jump.performed += ctx => motor.Jump();
+        //Make a callback context when run action is performed to start running
+        onFoot.Run.performed += ctx => motor.Run();
+        //Make a callback context when run action is canceled to stop running
+        onFoot.Run.canceled += ctx => motor.StopRunning();
 
         //Hide the cursor on the scene
         Cursor.visible = false;
@@ -36,6 +40,10 @@ public class InputManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        //if(onFoot.Run.performed){
+            //motor.Run();
+        //}
+        //onFoot.Run.performed += (context) => motor.Run();
         //Tell the PlayerMotor to move using the value from our Movement Action
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
