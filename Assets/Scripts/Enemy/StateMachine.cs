@@ -6,13 +6,9 @@ public class StateMachine : MonoBehaviour
 {
     //Create a variable to save the active state the enemy is currently in
     public BaseState activeState;
-    //Variable for the patrol state
-    public PatrolState patrolState;
 
     public void Initialise(){
-        //Setup default state to patrol state
-        patrolState = new PatrolState();
-        ChangeState(patrolState);
+        ChangeState(new PatrolState());
     }
 
     // Start is called before the first frame update

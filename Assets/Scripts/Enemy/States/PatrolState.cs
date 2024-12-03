@@ -17,6 +17,13 @@ public class PatrolState : BaseState
     public override void Perform(){
         //Perform the patrol cycle every frame
         PatrolCycle();
+        //If the enemy can see the player
+        //The variable enemy is on the BaseState class that this state inherits
+        if(enemy.CanSeePlayer()){
+            //Change the state to Attack State
+            //The variable stateMachine is on the BaseState class that this state inherits
+            stateMachine.ChangeState(new AttackState());
+        }
     }
 
     public override void Exit(){
