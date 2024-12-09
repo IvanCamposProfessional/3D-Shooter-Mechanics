@@ -9,22 +9,32 @@ public class Enemy : MonoBehaviour
     private StateMachine stateMachine;
     //Instance of the Navigation Agent of the enemy
     private NavMeshAgent agent;
-    //Public Agent to manipulate it
-    public NavMeshAgent Agent { get => agent; }
-    //String to save the current state enemy is on
-    //Serialize Field is just for debbuging purposes
-    [SerializeField]
-    private string currentState;
-    //Variable to set up the path that the enemy will follow
-    public Path path;
     //Variable to reference the player
     private GameObject player;
+    //Public Agent to manipulate it
+    public NavMeshAgent Agent { get => agent; }
+    //Public Player to use it in the states
+    public GameObject Player { get => player; }
+    //Variable to set up the path that the enemy will follow
+    public Path path;
+    [Header("Sight Values")]
     //Variable to set the enemy sight distance
     public float sightDistance = 20f;
     //Variable to set the enemy field of view
     public float fieldOfView = 85f;
     //Variable to set the eye height of the enemy
     public float eyeHeight;
+    [Header("Weapon Values")]
+    //Variable to save the position of the gun barrel on the Enemy GameObject
+    public Transform gunBarrel;
+    //Variable to set the fire rate of the Enemy
+    //We are defining that is a Range only between 0.1 and 10
+    [Range(0.1f,10f)]
+    public float fireRate;
+    //String to save the current state enemy is on
+    //Serialize Field is just for debbuging purposes
+    [SerializeField]
+    private string currentState;
 
     // Start is called before the first frame update
     void Start()
