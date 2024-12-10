@@ -41,6 +41,9 @@ public class AttackState : BaseState
                 //Reset move timer
                 moveTimer = 0;
             }
+
+            //Save on perform the last position the enemy can see the player
+            enemy.LastKnowPos = enemy.Player.transform.position;
         //The enemy can`t see the player    
         }else{
             //Increase lose player timer
@@ -50,7 +53,7 @@ public class AttackState : BaseState
             if(losePlayerTimer > 5){
                 //Change to the Search State
                 //The variable stateMachine is on the BaseState class that this state inherits
-                stateMachine.ChangeState(new PatrolState());
+                stateMachine.ChangeState(new SearchState());
             }
         }
     }

@@ -11,6 +11,11 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     //Variable to reference the player
     private GameObject player;
+    //Variable to save the last known position of the Player
+    private Vector3 lastKnowPos;
+    //Public Last Known Position to manipulate it
+    //Create a Setter to change the value
+    public Vector3 LastKnowPos {  get => lastKnowPos; set => lastKnowPos = value; }
     //Public Agent to manipulate it
     public NavMeshAgent Agent { get => agent; }
     //Public Player to use it in the states
