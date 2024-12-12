@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //Variable to set the enemy health
+    public float health = 100f;
     //Instance to the State Machine we want to use
     private StateMachine stateMachine;
     //Instance of the Navigation Agent of the enemy
@@ -59,6 +61,7 @@ public class Enemy : MonoBehaviour
     {
         //Check every frame if the enemy can see the player
         CanSeePlayer();
+        //Debug on the inspector the current state
         currentState = stateMachine.activeState.ToString();
     }
 
@@ -91,5 +94,20 @@ public class Enemy : MonoBehaviour
             }
         }
         return false;
+    }
+
+    //Function to take damage
+    public void TakeDamage(float damage){
+        health -= damage;
+
+        //If the enemy health is less or equal to 0 the enemy dies   
+        if(health <= 0){
+            Die();
+        }
+    }
+
+    //When the enemy dies it gets destroyed
+    private void Die(){
+        Destroy(gameObject);
     }
 }
